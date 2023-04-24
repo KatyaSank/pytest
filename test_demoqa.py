@@ -14,8 +14,10 @@ def test_text_box(driver):
     email = driver.find_element(By.ID, 'email')
     c_address = driver.find_element(By.ID, 'currentAddress')
     p_address = driver.find_element(By.ID, 'permanentAddress')
-    assert name.is_displayed(), email.is_displayed()
-    assert c_address.is_displayed(), p_address.is_displayed()
+    assert name.is_displayed()
+    assert email.is_displayed()
+    assert c_address.is_displayed()
+    assert p_address.is_displayed()
 
 
 def test_checkbox(driver):
@@ -28,8 +30,10 @@ def test_checkbox(driver):
     private = driver.find_element(By.XPATH, '//*[@id="result"]/span[4]')
     classified = driver.find_element(By.XPATH, '//*[@id="result"]/span[5]')
     general = driver.find_element(By.XPATH, '//*[@id="result"]/span[6]')
-    assert office.is_displayed(), public.is_displayed()
-    assert private.is_displayed(), classified.is_displayed()
+    assert office.is_displayed()
+    assert public.is_displayed()
+    assert private.is_displayed()
+    assert classified.is_displayed()
     assert general.is_displayed()
 
 
@@ -81,4 +85,5 @@ def test_update_table(driver):
     new_name = driver.find_element(By.XPATH,
                                    '//*[@id="app"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[4]/div/div[1]'). \
         text
-    assert new_age == "0", new_name == "S"
+    assert new_age == "0"
+    assert new_name == "S"
