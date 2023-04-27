@@ -29,17 +29,27 @@ class Base:
         class_name = (By.CLASS_NAME, selector)
         return self.driver.find_element(*class_name)
 
+    def click_checkbox(self, selector):
+        return self.get_locator_by_xpath(*selector).click
+
     def scroll_to_bottom(self):
         return self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-    def get_element(self, selector):
-        return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, selector)))
+    def click_radio_button(self, selector):
+        return self.get_locator_by_xpath(*selector).click
 
     def select_by_id_value(self, selector, value):
         return Select(self.get_locator_by_id(selector)).select_by_value(*value)
 
-    def get_attribute_by_locator_id(self, selector, attribute_name):
-        return self.get_locator_by_id(selector).get_attribute(attribute_name)
+    def get_attribute_by_class(self, selector):
+        return self.get_locator_by_id(selector).get_attribute('class')
+
+    def get_attribute_by_value(self, selector):
+        return self.get_locator_by_id(selector).get_attribute('value')
+
+    def get_attribute_from_input(self, selector, value):
+        self.get_locator_by_id(selector).send_keys(value)
+        print(self.get_attribute_by_value(selector))
 
     def assert_that_element_is_displayed_by_css(self, selector):
         return self.get_locator_by_css(selector).is_displayed()
@@ -55,3 +65,6 @@ class Base:
 
     def asser_that_element_is_selected_by_xpath(self, selector):
         return self.get_locator_by_xpath(selector).is_selected()
+
+    def get_element(self, selector):
+        return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, selector)))

@@ -44,18 +44,18 @@ def test_add_table(driver):
     base.get_url("https://demoqa.com/webtables")
     base.maximize_window()
     base.get_locator_by_id('addNewRecordButton').click()
-    base.get_locator_by_id('firstName').send_keys("Katie")
-    base.get_locator_by_id('lastName').send_keys("Sankovich")
-    base.get_locator_by_id('userEmail').send_keys("Katya@gmail.com")
-    base.get_locator_by_id('age').send_keys("99")
-    base.get_locator_by_id('salary').send_keys("999")
-    base.get_locator_by_id('department').send_keys("QA")
-    assert base.get_attribute_by_locator_id('firstName', 'value') == "Katie"
-    assert base.get_attribute_by_locator_id('lastName', 'value') == "Sankovich"
-    assert base.get_attribute_by_locator_id('userEmail', 'value') == "Katya@gmail.com"
-    assert base.get_attribute_by_locator_id('age', 'value') == "99"
-    assert base.get_attribute_by_locator_id('salary', 'value') == "999"
-    assert base.get_attribute_by_locator_id('department', 'value') == "QA"
+    base.get_attribute_from_input('firstName', "Katie")
+    base.get_attribute_from_input('lastName', "Sankovich")
+    base.get_attribute_from_input('userEmail', "Katya@gmail.com")
+    base.get_attribute_from_input('age', "99")
+    base.get_attribute_from_input('salary', "999")
+    base.get_attribute_from_input('department', "QA")
+    assert base.get_attribute_by_value('firstName') == "Katie"
+    assert base.get_attribute_by_value('lastName') == "Sankovich"
+    assert base.get_attribute_by_value('userEmail') == "Katya@gmail.com"
+    assert base.get_attribute_by_value('age') == "99"
+    assert base.get_attribute_by_value('salary') == "999"
+    assert base.get_attribute_by_value('department') == "QA"
     base.get_locator_by_id('submit').click()
     assert base.assert_that_element_is_displayed_by_xpath('//div[text()="Katya@gmail.com"]')
 
@@ -78,7 +78,7 @@ def test_update_table(driver):
     base.get_locator_by_id('age').send_keys("0")
     base.get_locator_by_id('firstName').clear()
     base.get_locator_by_id('firstName').send_keys("S")
-    print(base.get_attribute_by_locator_id('submit', 'class'))
+    print(base.get_attribute_by_class('submit'))
     base.get_locator_by_id('submit').click()
     new_age = base.get_locator_by_xpath('//div[text()="0"]').text
     new_name = base.get_locator_by_xpath('//div[text()="S"]').text
