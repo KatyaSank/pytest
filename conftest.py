@@ -3,7 +3,8 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from webdriver_manager.core.utils import ChromeType
-from webdriver_manager.firefox import GeckoDriverManager
+
+# from webdriver_manager.firefox import GeckoDriverManager
 
 
 @pytest.fixture
@@ -14,7 +15,12 @@ def driver():
 
     yield driver
 
-    driver.close()
+    # driver.close()
     driver.quit()
+
+
+# def pytest_addoption(parser):
+#     parser.addoption("--address", action="store", default="http://192.168.122.244/", help="HuntBox web address")
+#     parser.addoption("--browser", action="store", default="firefox", help="Browser name")
 
 
