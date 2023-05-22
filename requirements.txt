@@ -1,2 +1,8 @@
 pytest==7.3.0
-selenium==4.8.3
+selenium~=4.9.1
+docker==6.1.2
+Flask~=2.3.2
+mysql~=0.0.3
+mysql-connector-python~=8.0.33
+requests~=2.30.0
+Flask-RESTful==0.3.10
